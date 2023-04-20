@@ -1,0 +1,11 @@
+public class ApexAsRest {
+    public static void getData(){
+        Http http=new Http();
+        HttpRequest req=new HttpRequest();
+        req.setEndpoint('https://postman-echo.com/get?foo1=bar1&foo2=bar2');
+        req.setMethod('GET');
+        HttpResponse resp=http.send(req);
+        System.debug('response-->'+resp.getBody());
+	}
+
+}

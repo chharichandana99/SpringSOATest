@@ -1,0 +1,10 @@
+public class AccountHandler {
+
+   
+    
+    @auraEnabled(cacheable=true)
+    public static List<Account> returnAccounts()
+    {
+        return [SELECT id, name from Account order by createdDate desc limit 10];
+	}
+}

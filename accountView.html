@@ -1,0 +1,23 @@
+<template>
+	<lightning-card title="Fetch Account">
+		<div class="slds-m-around_medium">
+			
+			<template if:true={accounts.data}>
+				<template for:each={accounts.data} for:item="acc">
+					<lightning-layout vertical-align="center" key={acc.id}>
+						<li>
+                            {acc.Id}
+							{acc.Name}
+						</li>
+					</lightning-layout>
+				</template>
+			</template>
+            
+			<template if:true={accounts.error}>
+                <lightning-layout >
+						No records Available
+					</lightning-layout>
+			</template>
+		</div>
+	</lightning-card>
+</template>

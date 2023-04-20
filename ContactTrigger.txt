@@ -1,0 +1,5 @@
+trigger ContactTrigger on Contact (after insert, after update, after delete,after undelete) {
+    
+   List<Contact> listContacts = Trigger.isDelete ? Trigger.old:Trigger.new;
+   ContactTriggerHandler.doOperation(listContacts);
+}

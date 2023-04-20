@@ -1,0 +1,17 @@
+public class ContactTriggerHandler {
+	public static void doOperation(List<Contact> listContacts)
+    {
+        Set<Id> accIds  = new Set<Id>();
+        for (Contact con: listContacts)  {
+            accIds.add(con.AccountId);
+        }
+       List<Account> listAccounts = [Select Name, (Select Id from Contacts)  from Account WHERE Id in: accIds ];
+    
+        for (Account acc: listAccounts) {
+           List<Contact> conList = acc.Contacts;
+           System.debug('Account:' + acc.Name + ' No. of Contacts: '+ conList.size()); 
+           acc.Number_of_Contacts__c = conList.size();
+        }
+        update listAccounts;
+	}
+}
